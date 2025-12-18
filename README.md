@@ -1,10 +1,10 @@
-# 2E-EVRP Genetic Algorithm Solver – Streamlit App
+# 2E-EVRP Ant Colony Optimization Solver – Streamlit App
 
 [![Streamlit App](https://img.shields.io/badge/Streamlit-1.28+-red?logo=streamlit)](https://streamlit.io)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](#)
 
-A **Streamlit-based interactive web application** that solves the **Two-Echelon Electric Vehicle Routing Problem (2E-EVRP)** using a **Genetic Algorithm (GA)**. Visualize routes, recharge stations, satellites, and clients with real-time optimization metrics.
+A **Streamlit-based interactive web application** that solves the **Two-Echelon Electric Vehicle Routing Problem (2E-EVRP)** using an **Ant Colony Optimization (ACO)**. Visualize routes, recharge stations, satellites, and clients with real-time optimization metrics.
 
 ---
 
@@ -24,7 +24,7 @@ A **Streamlit-based interactive web application** that solves the **Two-Echelon 
 
 | Feature                 | Details                                                              |
 | ----------------------- | -------------------------------------------------------------------- |
-| **GA Optimization**     | Population-based evolution with crossover & mutation operators       |
+| **ACO Optimization**    |Population-based metaheuristic with pheromone trails and heuristic guidance|
 | **Battery Management**  | Realistic energy consumption & recharging at stations                |
 | **Satellite Routing**   | Smart satellite visits based on load thresholds                      |
 | **Time Windows**        | Constraint handling with penalties for late arrivals                 |
@@ -46,8 +46,8 @@ pip install -r requirements.txt
 
 ```bash
 # 1. Clone the repository
-git clone <https://github.com/AhmedTrabelsy/E-VRP>
-cd 2E-EVRP-GA-Solver
+git clone <https://github.com/hamdikbel/E-VRP_ACO.git>
+cd E-VRP_ACO
 
 # 2. Install dependencies
 pip install streamlit streamlit-agraph numpy
@@ -58,7 +58,7 @@ pip install streamlit streamlit-agraph numpy
 # 4. Launch the app
 streamlit run app_ga_evrp.py 
 or
-python -m streamlit run app_ga_evrp.py
+python -m streamlit run ACO_evrp.py
 ```
 
 Open `http://localhost:8501` in your browser.
@@ -68,8 +68,8 @@ Open `http://localhost:8501` in your browser.
 ## 📁 Project Structure
 
 ```
-E-VRP/
-├── app_ga_evrp.py                 # Main Streamlit application
+E-VRP_ACO/
+├── ACO_evrp.py                 # Main Streamlit application
 ├── 2E-EVRP-Instances-v2/          # Dataset (Type_x, Type_y folders)
 ├── requirements.txt               # Dependencies
 ├── .gitignore
@@ -105,12 +105,14 @@ Minimize: total_distance + penalty_cost + time_delay_penalty
 Maximize: clients_served
 ```
 
-### GA Parameters
+### ACO Parameters
 
-- **Population Size**: Number of candidate solutions
-- **Generations**: Evolutionary iterations
-- **Crossover Rate**: Probability of genetic recombination
-- **Mutation Rate**: Solution diversification parameter
+- **Number of Ants**: Colony size
+- **Iterations**: Evolutionary cycles
+- **Alpha**: Pheromone importance
+- **Beta**: Heuristic (inverse distance) importance
+- **Rho**: Pheromone evaporation rate
+
 
 ---
 
@@ -121,8 +123,8 @@ Maximize: clients_served
 1. **Dataset Type**: Select `Type_x` or `Type_y`
 2. **Customer Count**: Choose `5`, `10`, `15`, `50`, or `100`
 3. **Instance File**: Select a `.txt` instance
-4. **GA Hyperparameters**: Tune population, generations, and rates
-5. **Run**: Click **"Lancer GA"** to optimize
+4. **ACO Hyperparameters**: Tune ants, iterations, alpha, beta, and rho
+5. **Run**: Click **"Lancer ACO"** to optimize
 
 ### Output Metrics
 
@@ -143,10 +145,10 @@ Maximize: clients_served
 
 Enhance the algorithm by:
 
-- Implementing advanced crossover (PMX, OX)
-- Adding local search operators (2-opt, Or-opt)
+- Implementing elitism or local search (e.g., 2-opt)
+- Adding advanced pheromone update rules
 - Tuning penalty coefficients
-- Integrating new mutation strategies
+- Supporting partial recharging
 - Exporting solutions to CSV/JSON
 
 ---
