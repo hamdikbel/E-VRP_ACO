@@ -1,4 +1,4 @@
-# 🐜 Algorithme de Colonies de Fourmis pour 2E-EVRP – Streamlit App
+# 🐜 Algorithme de Colonies de Fourmis pour 2E-EVRP – Streamlit Application
 
 [![Streamlit App](https://img.shields.io/badge/Streamlit-1.28+-red?logo=streamlit)](https://streamlit.io)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)](https://www.python.org/)
